@@ -1,13 +1,12 @@
 $(document).ready(function() {
 
-    $.fn.highlighted = function() {
-    		console.log(this);
-	    	return this.addClass("highlighted");
-	    }
+    $("#toogle").on("click", function() {
+    	var opened = $(".hamburger").data("opened");
 
-    $(".col.col-md-12").highlighted();
-    $(".navbar-header a[href^='http']").attr("target", "_blank");
-    $("input:radio, input:checkbox").not(":checked").highlighted();
-    $(".text p:empty:first").highlighted().remove();
-    $(".pagination-item:not(spam)").highlighted();
+    	$(".hamburger").stop().transition({
+    		x: opened ? 0 : $(".hamburger").outerWidth()
+    	});
+
+    	$(".hamburger").data("opened", opened ? false : true);
+    });
 });
